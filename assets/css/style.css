@@ -121,8 +121,6 @@ body {
 /* Slider */
 
 /* Content */
-#content {
-}
 #content .content-section {
     padding: 96px 12rem;
     width: 100%;
@@ -161,16 +159,45 @@ body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    gap: 20px 40px;
 }
 #content .places-wrap {
     width: calc((100% / 3) - 4rem);
-    margin: 0 2rem 4rem;
 }
-#content .places-img {
-    width: 100%;
-    height: 100%;
+#content .places-wrap .places-img {
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
     border-radius: 1rem;
+    display: block;
+}
+#content .places-item {
+    border-radius: 1rem;
+    position: relative;
+}
+#content .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    transition: all 0.25s linear;
+    cursor: pointer;
+    background-color: rgba(26, 188, 156, 0.9);
+}
+#content .places-item:hover .overlay {
+    opacity: 1;
+}
+#content .overlay-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 3rem;
+    color: #fff;
 }
 /* Content */
 
@@ -246,21 +273,40 @@ body {
 }
 #form .form-wrap {
     margin-bottom: 1rem;
+    width: 100%;
+    position: relative;
 }
 #form .input-form {
     width: 100%;
     display: block;
     font-size: 2.5rem;
     padding: 2.4rem 4.8rem 2.4rem 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    outline: none;
-    border-width: 2px;
+    border: none;
+    border-bottom: 2px solid #ccc;
     transition: all 0.25s linear;
 }
-#form .input-form:focus {
-    border-color: red;
+#form .input-form:focus, .input-form:valid {
+    outline: none;
+    border-bottom-color: lightblue;
+}
+#form .form-label-demo {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    pointer-events: none;
+}
+#form .form-label-demo span {
+    display: inline-block;
+    min-width: 5px;
+    font-size: 1.8rem;
+    color: #ccc;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#form .input-form:focus + .form-label-demo span, .input-form:valid .form-label-demo span {
+    color: lightblue;
+    transform: translateY(-20px);
 }
 #form .btn {
     font-size: 2rem;
@@ -317,6 +363,7 @@ body {
     margin-right: 1rem;
     text-align: center;
     transition: all 0.25s linear;
+    cursor: pointer;
 }
 .col-3 .socials-list span:hover {
     background-color: #fff;
