@@ -93,6 +93,7 @@ body {
   color: #fff;
   font-weight: bold;
   line-height: 10rem;
+  user-select: none;
 }
 .slider-content .slider-line {
   margin: 2rem 0 2.4rem;
